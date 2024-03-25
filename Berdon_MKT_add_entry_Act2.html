@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+		body{
+		
+			background-image: url("V.A.S background.png");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%;
+		}
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+		<img src="V.A.S logo 2.png" style ="width: 100px; height: 100px;"/>
+	</center>
+	
+    <div class="container">
+		<center><font face="Times New Roman"><h2>Vigilant Armament Systems</h2></center>
+        <center><font face="Times New Roman"><h4>Marketing Department</h4></center>
+        <form action="login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+
+        <?php
+        // Check if the form is submitted
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Retrieve username and password from the form
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+            
+            // Replace this with your actual authentication logic
+            // For example, checking against a database
+            if ($username === "your_username" && $password === "your_password") {
+                // Successful login - Redirect or display a success message
+                header("Location: welcome.php"); // Change welcome.php to your actual success page
+                exit();
+            } else {
+                // Failed login - Display an error message
+                echo '<p class="error">Invalid username or password.</p>';
+            }
+        }
+        ?>
+
+    </div>
+	
+</body>
+</html>
